@@ -1,5 +1,4 @@
 # gitAdvanced
-# gitRepo
 
 ## Initial commits
 ```bash
@@ -77,4 +76,33 @@ $ git add test4.md & git commit --amend
  create mode 100644 test4.md
 [1]+  Done                    git add test4.md
 
+```
+
+```bash
+$ git rebase -i
+Stopped at 3fe93ab...  chore: Create another file
+You can amend the commit now, with
+
+  git commit --amend
+
+Once you are satisfied with your changes, run
+
+  git rebase --continue
+```
+```bash
+$ git commit --amend
+[detached HEAD d5a60f7] chore: Create second file
+ Date: Mon May 20 19:21:47 2024 +0200
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test2.md
+```
+
+```bash
+$ git rebase --continue
+Successfully rebased and updated refs/heads/main.
+```
+#### how to see the hash for my head
+```bash 
+$ git reset --hard head~
+HEAD is now at 3fe93ab chore: Create another file
 ```
