@@ -106,3 +106,120 @@ Successfully rebased and updated refs/heads/main.
 $ git reset --hard head~
 HEAD is now at 3fe93ab chore: Create another file
 ```
+
+### Rebase
+```bash
+$ git rebase -i HEAD~3
+[detached HEAD 0fe95f3] chore: Create initial file
+ Date: Tue May 21 08:55:11 2024 +0200
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test1.md
+ create mode 100644 test2.md
+Successfully rebased and updated refs/heads/main.
+
+$ git log
+commit 5b89fe19b4e4e7706f9500bd94c3680e9d28423e (HEAD -> main)
+Author: Beyla Irakoze <beylaruz@gmail.com>
+Date:   Tue May 21 08:55:16 2024 +0200
+
+    chore: Create fourth files
+
+commit 0fe95f35a975d06ef3967004a375d36e4a7954e1
+Author: Beyla Irakoze <beylaruz@gmail.com>
+Date:   Tue May 21 08:55:11 2024 +0200
+
+    chore: Create initial file
+
+    chore: Create second file
+```
+### splitting commits
+```bash
+$ git reset HEAD~
+
+$ git add test3.md & git commit -m "Create third files"
+[1] 581
+[main 0c94a37] Create third files
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test3.md
+[1]+  Done                    git add test3.md
+
+$ git add test4.md & git commit -m "Create fourth files"
+[1] 598
+[main 437a4e8] Create fourth files
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test4.md
+[1]+  Done                    git add test4.md
+
+$ git rebase -i HEAD~3
+[detached HEAD 8482af7] Create third and fourth files
+ Date: Tue May 21 10:41:32 2024 +0200
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test3.md
+ create mode 100644 test4.md
+Successfully rebased and updated refs/heads/main.
+
+$ git log
+commit 8482af71de1e0211449029de0646ce1060769711 (HEAD -> main)
+Author: Beyla Irakoze <beylaruz@gmail.com>
+Date:   Tue May 21 10:41:32 2024 +0200
+
+    Create third and fourth files
+
+commit 0fe95f35a975d06ef3967004a375d36e4a7954e1
+Author: Beyla Irakoze <beylaruz@gmail.com>
+Date:   Tue May 21 08:55:11 2024 +0200
+
+    chore: Create initial file
+
+    chore: Create second file
+
+commit 42aa524481bf3ae39e804e76f16e706cfaf77642 (origin/main, origin/HEAD)
+Author: Beyla Ruzindana Irakoze <142901020+beylar@users.noreply.github.com>
+Date:   Tue May 21 08:52:02 2024 +0200
+
+    Initial commit
+
+```
+
+### Dropping a commit 
+```bash
+$ touch unwanted.txt
+
+$ git add unwanted.txt & git commit -m "Unwanted text"
+[1] 748
+[main a92dfa6] Unwanted text
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 unwanted.txt
+[1]+  Done                    git add unwanted.txt
+
+$ git log
+commit a92dfa6c1f580829a0dd8b25998864f8cf46d645 (HEAD -> main)
+Author: Beyla Irakoze <beylaruz@gmail.com>
+Date:   Tue May 21 11:03:16 2024 +0200
+
+    Unwanted text
+
+commit 8482af71de1e0211449029de0646ce1060769711
+Author: Beyla Irakoze <beylaruz@gmail.com>
+Date:   Tue May 21 10:41:32 2024 +0200
+
+    Create third and fourth files
+
+commit 0fe95f35a975d06ef3967004a375d36e4a7954e1
+Author: Beyla Irakoze <beylaruz@gmail.com>
+Date:   Tue May 21 08:55:11 2024 +0200
+
+    chore: Create initial file
+
+    chore: Create second file
+
+commit 42aa524481bf3ae39e804e76f16e706cfaf77642 (origin/main, origin/HEAD)
+Author: Beyla Ruzindana Irakoze <142901020+beylar@users.noreply.github.com>
+Date:   Tue May 21 08:52:02 2024 +0200
+
+    Initial commit
+
+$ git reset --hard HEAD~1
+HEAD is now at 8482af7 Create third and fourth files
+```
+
