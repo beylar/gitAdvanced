@@ -404,5 +404,153 @@ defa2cd HEAD@{45}: commit: chore: Create initial file
 
 ## Part 2
 
+### Branch creation
+```bash
+$ git checkout -b ft/new-feature
+Switched to a new branch 'ft/new-feature'
+```
+
+### Working on the feature branch
+```bash
+$ touch feature.txt
+$ git add feature.txt 
+$ git commit -m "Implemented core functionality for new feature"
+[ft/new-feature d53c0f0] Implemented core functionality for new feature
+ 1 file changed, 1 insertion(+)
+ create mode 100644 feature.txt
+```
+
+### Switching Back and Making More Changes
+```bash
+ $ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 3 commits.
+  (use "git push" to publish your local commits) 
+$ touch readme.txt
+$ git add readme.txt   
+$ git commit -m "Updated project readme"
+[main 89e873f] Updated project readme
+ 1 file changed, 1 insertion(+)
+ create mode 100644 readme.txt
+
+```
+
+### Local vs. Remote Branches
+```bash
+$ git checkout ft/new-feature 
+Switched to branch 'ft/new-feature'
+
+$ git push origin ft/new-feature 
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.    
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done. 
+Writing objects: 100% (3/3), 319 bytes | 106.00 KiB/s, done. 
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: 
+remote: Create a pull request for 'ft/new-feature' on GitHub by visiting:  
+remote:      https://github.com/beylar/Git_learning/pull/new/ft/new-featur 
+remote:
+To https://github.com/beylar/Git_learning.git
+ * [new branch]      ft/new-feature -> ft/new-feature
+
+$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+  ```
+
+### Branch deletion
+```bash 
+$ git merge ft/new-feature
+Merge made by the 'ort' strategy.
+ feature.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 feature.txt
+
+$ git branch --delete ft/new-feature
+Deleted branch ft/new-feature (was fae2d96).
+```
+
+### Creating a branch from a commit
+```bash
+$ git log -1 --pretty=format:%H HEAD~2
+ea8e6c730ee48d31a3f50ba78cd0868592d5067e
+
+$ git checkout -b ft/new-branch-from-commit 1d2d98d687d3b02269d6775955c67f098a3ac7f0
+Switched to a new branch 'ft/new-branch-from-commit'
+```
+
+### Branch merging
+```bash
+$ touch text.txt
+$ git add text.txt
+$ git commit -m "changes in new feature branch"
+[ft/new-branch-from-commit 7154af7] changes in new feature branch
+ 1 file changed, 1 insertion(+)
+ create mode 100644 text.txt
+$ git push origin ft/new-branch-from-commit
+Enumerating objects: 10, done.
+Counting objects: 100% (10/10), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (8/8), 872 bytes | 109.00 KiB/s, done.
+Total 8 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), done.
+remote:
+remote: Create a pull request for 'ft/new-branch-from-commit' on GitHub by 
+visiting:
+remote:      https://github.com/beylar/Git_learning/pull/new/ft/new-branch-from-commit
+remote:
+To https://github.com/beylar/Git_learning.git
+ * [new branch]      ft/new-branch-from-commit -> ft/new-branch-from-commit
+$ git merge ft/new-branch-from-commit
+Updating 1d2d98d..7154af7
+Fast-forward
+ text.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 text.txt
+
+```
+
+### Branch Rebasing
+```bash
+$ git checkout ft/new-branch-from-commit
+$ git rebase main
+Successfully rebased and updated refs/heads/ft/new-branch-from-commit.
+```
+
+### Renaming branches
+```bash
+ git branch -m ft/new-branch-from-commit ft/improved-branch-name
+```
+
+### Checking Out Detached HEAD
+```bash
+$ git checkout 1d2d98d687d3b02269d6775955c67f098a3ac7f0
+Note: switching to '1d2d98d687d3b02269d6775955c67f098a3ac7f0'.
+
+You are in 'detached HEAD' state. You can look around, make experimental   
+changes and commit them, and you can discard any commits you make in this  
+state without impacting any branches by switching back to a branch.        
+
+If you want to create a new branch to retain commits you create, you may   
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 1d2d98d Merge branch 'ft/new-feature'
+```
+
+## Part 3
+
+
+
 
 
