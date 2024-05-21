@@ -510,6 +510,12 @@ Fast-forward
  text.txt | 1 +
  1 file changed, 1 insertion(+)
  create mode 100644 text.txt
+ 
+ $ git pull origin main
+From https://github.com/beylar/Git_learning
+ * branch            main       -> FETCH_HEAD
+Updating 7154af7..4a4b15a
+Fast-forward
 
 ```
 
@@ -549,8 +555,62 @@ HEAD is now at 1d2d98d Merge branch 'ft/new-feature'
 ```
 
 ## Part 3
+### Stashing Changes
+```bash
+$ git stash
+Saved working directory and index state WIP on main: 4a4b15a Merge pull request #2 from beylar/ft/new-branch-from-commit
+```
 
+### Retrieving Stashed Changes
+```bash
+$ git stash pop
+On branch main
+Your branch is up to date with 'origin/main'.
 
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   readme.txt
 
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (9fe5875fed2c1c44397f005fed33118c560a5145)
+```
+### Branch Merging Conflicts
+```bash
+
+```
+### Resolving Merge Conflicts with a Merge Tool
+```bash
+
+```
+
+### Understanding Detached HEAD State
+```bash
+
+```
+
+### Ignoring Files/Directories
+```bash
+
+```
+
+### Working with Tags
+```bash
+
+```
+
+### Listing and Deleting Tags
+```bash
+
+```
+
+### Pushing Local work to Remote Repositories
+```bash
+
+```
+### Pulling Changes from Remote Repositories
+```bash
+
+```
 
 
