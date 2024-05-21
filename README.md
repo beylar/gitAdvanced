@@ -586,7 +586,26 @@ Dropped refs/stash@{0} (9fe5875fed2c1c44397f005fed33118c560a5145)
 
 ### Understanding Detached HEAD State
 ```bash
+$ git checkout 1d2d98d687d3b02269d6775955c67f098a3ac7f0
+M       readme.txt
+Note: switching to '1d2d98d687d3b02269d6775955c67f098a3ac7f0'.
 
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 1d2d98d Merge branch 'ft/new-feature'
 ```
 
 ### Ignoring Files/Directories
