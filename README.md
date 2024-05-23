@@ -710,7 +710,7 @@ To https://github.com/beylar/Git_learning.git
 
 ```
 ### Pulling Changes from Remote Repositories
-##### with merge data locally 
+##### Data merged and pulled to update my local working directory
 ```bash
 $ git pull origin
 Already up to date.
