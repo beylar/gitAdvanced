@@ -577,13 +577,67 @@ Dropped refs/stash@{0} (9fe5875fed2c1c44397f005fed33118c560a5145)
 ```
 ### Branch Merging Conflicts
 ```bash
+thegym@DESKTOP-3L2FSN6 MINGW64 ~/Desktop/Git_learning ((f66fc20...))
+$ git checkout main
+M       readme.txt
+Previous HEAD position was f66fc20 Updated project readme
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
 
+thegym@DESKTOP-3L2FSN6 MINGW64 ~/Desktop/Git_learning (main)
+$ git add readme.txt
+
+thegym@DESKTOP-3L2FSN6 MINGW64 ~/Desktop/Git_learning (main)
+$ git commit -m "Conflicts"
+[main 241b09e] Conflicts
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+thegym@DESKTOP-3L2FSN6 MINGW64 ~/Desktop/Git_learning (main)
+$ git checkout ft/new-feature 
+branch 'ft/new-feature' set up to track 'origin/ft/new-feature'.
+Switched to a new branch 'ft/new-feature'
+
+thegym@DESKTOP-3L2FSN6 MINGW64 ~/Desktop/Git_learning (ft/new-feature)
+$ git add readme.txt 
+
+thegym@DESKTOP-3L2FSN6 MINGW64 ~/Desktop/Git_learning (ft/new-feature)
+$ git commit -m "conflict again"
+[ft/new-feature 3ecbf84] conflict again
+ 1 file changed, 3 insertions(+)
+ create mode 100644 readme.txt
 ```
 ### Resolving Merge Conflicts with a Merge Tool
 ```bash
+thegym@DESKTOP-3L2FSN6 MINGW64 ~/Desktop/Git_learning (ft/new-feature)
+$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
 
+thegym@DESKTOP-3L2FSN6 MINGW64 ~/Desktop/Git_learning (main)
+$ git merge ft/new-feature 
+Auto-merging readme.txt
+CONFLICT (add/add): Merge conflict in readme.txt
+Automatic merge failed; fix conflicts and then commit the result.
+~                                                  |~
+~                                                  |~
+~                                                  |~
+<adme_LOCAL_542.txt [dos] (08:57 23/05/2024)2,1 All <adme_REMOTE_542.txt [dos] (08:57 23/05/2024)2,1 All  Updated project readme
+  Charite is tired
+  <<<<<<< HEAD
+  Life is just life
+  =======
+  One thing is clear
+  >>>>>>> ft/new-feature
+~
+~
+~
+~
+readme.txt [dos] (08:57 23/05/2024)                                                              2,1 Allrecording @i
+
+$ git merge --continue
+[main 8032c01] Merge branch 'ft/new-feature'
 ```
-
 ### Understanding Detached HEAD State
 ```bash
 $ git checkout 1d2d98d687d3b02269d6775955c67f098a3ac7f0
@@ -610,25 +664,56 @@ HEAD is now at 1d2d98d Merge branch 'ft/new-feature'
 
 ### Ignoring Files/Directories
 ```bash
-
+$ touch .gitignore
+$ cat .gitignore
+/temp
 ```
 
 ### Working with Tags
 ```bash
-
+$ git tag v1.0
 ```
 
 ### Listing and Deleting Tags
 ```bash
-
+$ git tag
+v1.0
+$ git tag -d v1.0
+Deleted tag 'v1.0' (was 8032c01)
 ```
 
 ### Pushing Local work to Remote Repositories
 ```bash
+$ git add .
+$ git commit -m "My challenges"
+[main a0bfaba] My challenges
+ 8 files changed, 14 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 .readme.txt.swp
+ create mode 100644 .readme_LOCAL_542.txt.swp
+ create mode 100644 .readme_REMOTE_542.txt.swp
+ create mode 100644 readme_BACKUP_542.txt
+ create mode 100644 readme_BASE_542.txt
+ create mode 100644 readme_LOCAL_542.txt
+ create mode 100644 readme_REMOTE_542.txt
+
+$ git push origin main
+Enumerating objects: 20, done.
+Counting objects: 100% (20/20), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (14/14), done.
+Writing objects: 100% (17/17), 1.69 KiB | 123.00 KiB/s, done.
+Total 17 (delta 5), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (5/5), completed with 1 local object.
+To https://github.com/beylar/Git_learning.git
+   4a4b15a..a0bfaba  main -> main
 
 ```
 ### Pulling Changes from Remote Repositories
+##### with merge data locally 
 ```bash
+$ git pull origin
+Already up to date.
 
 ```
 
